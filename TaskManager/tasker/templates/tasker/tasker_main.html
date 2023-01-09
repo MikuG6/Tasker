@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Главная страница</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'tasker/css/tasker_main_css.css' %}">
+</head>
+<body>
+
+<table class="blueTable">
+<tbody>
+<tr>
+<td><a href="{% url 'home' %}">Цели и задачи<a/></td><td>Создать задачу</td></tr>
+</tbody>
+</tr>
+</table>
+{% for n in obj_list %}
+	<h1>{{n}}</h1>
+{% endfor %}
+</body>
+</html>

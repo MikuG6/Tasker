@@ -1,0 +1,33 @@
+{% extends 'tasker/layout.html' %}
+
+{% block content %}
+
+<div style="margin-top: 50px;" class="ui container">
+    <h1 class="ui center aligned header">Мой менеджер задач</h1>
+    <h3 class="test_style">Управляй своим временем!</h3>
+    <form class="ui form" action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <div class="field">
+            <label>Новая задача</label>
+            <input type="text" name='title' placeholder="Введите название задачи"><br>
+        </div>
+        <button class="ui teal basic button" type="submit">Добавить</button>
+    </form>
+
+{% for task in obj_list %}
+<div class="ui segment">
+    <p class="ui big header">№{{ task.id }} {{ task.title }} </p>
+
+    {% if task.is_complite == False %}
+        <span class="ui gray label">Не завершено </span>
+        <a class="ui primary basic button" href="{% url 'update' task_id=task.id %}">Закрыть</a>
+    {% else %}
+        <span class="ui green label">Завершено</span>
+        <a class="ui blue button" href="{% url 'update' task_id=task.id %}">Открыть</a>
+    {% endif %}
+        <a class="ui negative basic button" href="{% url 'delete' task_id=task.id %}">Удалить</a>
+</div>
+{% endfor %}
+</div>
+
+{% endblock content %}

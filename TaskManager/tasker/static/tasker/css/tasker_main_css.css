@@ -1,0 +1,29 @@
+table.blueTable {
+  font-family: Impact, Charcoal, sans-serif;
+  border: 3px solid #0AA408;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 2px solid #AAAAAA;
+  padding: 7px 10px;
+}
+table.blueTable tbody td {
+  font-size: 20px;
+  color: #330202;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
