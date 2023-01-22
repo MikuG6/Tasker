@@ -6,11 +6,21 @@
 </head>
 <body>
     {% if request.user.is_authenticated %}
-    <a class="ui primary basic button" href="{% url 'profile' %}"><h1>Пользователь: {{user.username}}|</h1> |</a> <a class="ui primary basic button" href="{% url 'logout' %}">Выйти</a>
+        <a class="ui primary basic button" href="{% url 'profile' %}">
+            <h1>Пользователь: {{request.user.username}}|</h1>
+        </a>
+        |
+        <a class="ui primary basic button" href="{% url 'logout' %}">
+            Выйти
+        </a>
     {% else %}
-<bdi><a class="ui primary basic button" href="{% url 'register' %}">Регистрация</a> | <a class="ui primary basic button" href="{% url 'login' %}">Войти</a>
+        <bdi>
+            <a class="ui primary basic button" href="{% url 'register' %}">Регистрация</a>
+            |
+            <a class="ui primary basic button" href="{% url 'login' %}">Войти</a>
+        </bdi>
     {% endif %}
-<a class="ui primary basic button" href="{% url 'add_page' %}">/////////////////////////  Добавить новую задачу|</a></bdi>
+    <a class="ui primary basic button" href="{% url 'page_add_task' %}">/////////////////////////  Добавить новую задачу|</a>
 <h1>-------------------------------------------------------------------------------------------</h1>
 
 {% block login %}
@@ -29,31 +39,28 @@
 
 {% endblock %}
 
-{% for task in order_tasks %}
-<div class="ui segment">
-    <h>-------------------------------------------------------------------------------------------</h>
-    <p class="ui big header">№{{ task.id }} {{ task.title }} Участники:
-{% for i in tasks_list %}
-{% if i.title in task.title %}
-    {{user}}
-{% endif %}
-{% endfor %}
-</p>
-
-    {% if task.is_complite == False %}
-        <span class="ui gray label">Не завершено </span>
-        <a class="ui primary basic button" href="{% url 'update' task_id=task.id %}">Закрыть</a>
-    {% else %}
-        <span class="ui green label">Завершено</span>
-        <a class="ui blue button" href="{% url 'update' task_id=task.id %}">Открыть</a>
-    {% endif %}
-        <a class="ui negative basic button" href="{% url 'delete' task.id %}">Удалить</a>
-        {% if task.title in tasks_dict %}       
-            <a class="ui negative basic button" href="{% url 'add_to_user' task.id %}">Присоединиться</a>
+{% for task in tasks %}
+    <div class="ui segment">
+        <h>-------------------------------------------------------------------------------------------</h>
+        <p class="ui big header">№{{ task.id }} {{ task.title }} Участники:
+            {% for user in task.users.all %}
+                {{ user }}
+            {% endfor %}
+        </p>
+        {% if not task.is_complete %}
+            <span class="ui gray label">Не завершено </span>
+            <a class="ui primary basic button" href="{% url 'update' task_id=task.id %}">Закрыть</a>
         {% else %}
-            <a class="ui negative basic button" href="{% url 'add_to_user' task.id %}">Выйти из состава участников</a>
+            <span class="ui green label">Завершено</span>
+            <a class="ui blue button" href="{% url 'update' task_id=task.id %}">Открыть</a>
         {% endif %}
+        <a class="ui negative basic button" href="{% url 'delete' task.id %}">Удалить</a>
+        {% if task not in request.user.tasks.all %}
+            <a class="ui negative basic button" href="{% url 'add_user' task.id %}">Присоединиться</a>
+        {% else %}
+            <a class="ui negative basic button" href="{% url 'remove_user' task.id %}">Выйти из состава участников</a>
+        {% endif %}
+    </div>
 {% endfor %}
-</div>
 </body>
 </html>

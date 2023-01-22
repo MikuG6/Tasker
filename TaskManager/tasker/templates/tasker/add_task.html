@@ -2,7 +2,7 @@
 {% extends 'tasker/index.html' %}
 
 {% block main %}
-<form class="ui form" action="{% url 'add' %}" method="post">
+<form class="ui form" action="{% url 'add_task' %}" method="post">
 {% csrf_token %}
 <div class="field">
     <p></p>
