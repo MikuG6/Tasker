@@ -8,24 +8,24 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('tasker', '0011_rename_task_about_taskabout_and_more'),
+        ("tasker", "0011_rename_task_about_taskabout_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='Название задания')),
-                ('is_complete', models.BooleanField(default=False, verbose_name='Завершено')),
-                ('users', models.ManyToManyField(related_name='tasks', to=settings.AUTH_USER_MODEL)),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("title", models.CharField(max_length=100, verbose_name="Название задания")),
+                ("is_complete", models.BooleanField(default=False, verbose_name="Завершено")),
+                ("users", models.ManyToManyField(related_name="tasks", to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'verbose_name': 'Задание',
-                'verbose_name_plural': 'Задания',
+                "verbose_name": "Задание",
+                "verbose_name_plural": "Задания",
             },
         ),
         migrations.DeleteModel(
-            name='TaskAbout',
+            name="TaskAbout",
         ),
     ]

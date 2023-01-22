@@ -8,17 +8,17 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('tasker', '0010_alter_task_about_user_task_user'),
+        ("tasker", "0010_alter_task_about_user_task_user"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Task_about',
-            new_name='TaskAbout',
+            old_name="Task_about",
+            new_name="TaskAbout",
         ),
         migrations.RenameField(
-            model_name='taskabout',
-            old_name='is_complite',
-            new_name='is_complete',
+            model_name="taskabout",
+            old_name="is_complite",
+            new_name="is_complete",
         ),
     ]

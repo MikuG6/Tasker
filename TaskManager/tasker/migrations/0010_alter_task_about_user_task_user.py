@@ -9,13 +9,13 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('tasker', '0009_alter_task_about_user'),
+        ("tasker", "0009_alter_task_about_user"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task_about',
-            name='user',
+            model_name="task_about",
+            name="user",
             field=models.ManyToManyField(to=settings.AUTH_USER_MODEL),
         ),
     ]

@@ -1,5 +1,5 @@
 <title>Профиль</title>
-{% extends 'tasker/index.html' %}
+{% extends "tasker/index.html" %}
 
 {% block prof %}
 
@@ -13,12 +13,12 @@
 
     {% if task.is_complete == False %}
         <span class="ui gray label">Не завершено </span>
-        <a class="ui primary basic button" href="{% url 'update' task_id=task.id %}">Закрыть</a>
+        <a class="ui primary basic button" href="{% url "update_task" task_pk=task.id %}">Закрыть</a>
     {% else %}
         <span class="ui green label">Завершено</span>
-        <a class="ui blue button" href="{% url 'update' task_id=task.id %}">Открыть</a>
+        <a class="ui blue button" href="{% url "update_task" task_pk=task.id %}">Открыть</a>
     {% endif %}
-        <a class="ui negative basic button" href="{% url 'delete' task.id %}">Удалить</a>
+        <a class="ui negative basic button" href="{% url "delete_task" task_pk=task.id %}">Удалить</a>
 
 {% endif %}
 {% endfor %}

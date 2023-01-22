@@ -1,13 +1,13 @@
 <title>Добавить задачу</title>
-{% extends 'tasker/index.html' %}
+{% extends "tasker/index.html" %}
 
 {% block main %}
-<form class="ui form" action="{% url 'add_task' %}" method="post">
+<form class="ui form" action="{% url "tasks" %}" method="post">
 {% csrf_token %}
 <div class="field">
     <p></p>
     <label>Новая задача</label>
-    <input type="text" name='title' placeholder="Введите название задачи"><br>
+    <input type="text" name="title" placeholder="Введите название задачи"><br>
     <button type="submit">Добавить новую задачу</button>
 </div>
 </form>
