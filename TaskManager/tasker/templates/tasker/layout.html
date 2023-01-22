@@ -1,22 +1,8 @@
-<!doctype html>
-{% load static %}
-
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>{{ title }} </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <link rel="stylesheet" href="{% static 'tasker/css/style.css' %}">
-
-</head>
-<body>
+{% extends 'tasker/layout.html' %}
 
 {% block content %}
-
+<h1>Мой менеджер задач</h1>
+<!-- <a title="Home" href="https://html-css-js.com" target="_blank">Link</a>
+<p><a title="Home" href="https://html-css-js.com" target="_blank">Link</a> </p>
+<form class="ui form" action="{% url 'add' %}" method="post"> -->
 {% endblock content %}
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-</body>
-</html>

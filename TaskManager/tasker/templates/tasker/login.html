@@ -1,0 +1,15 @@
+<title>Авторизация</title>
+{% extends 'tasker/index.html' %}
+
+{% block login %}
+
+<h1>{{title}}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+	<button type="submit">Войти</button>
+</form>
+    
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<title>Профиль</title>
+{% extends 'tasker/index.html' %}
+
+{% block prof %}
+
+{% for task in order_tasks %}
+{% for i in tasks_list %}
+{% if i.title in task.title %}
+
+<div class="ui segment">
+    <h>-------------------------------------------------------------------------------------------</h>
+    <p class="ui big header">№{{ task.id }} {{ task.title }} {{user2}}</p>
+
+    {% if task.is_complite == False %}
+        <span class="ui gray label">Не завершено </span>
+        <a class="ui primary basic button" href="{% url 'update' task_id=task.id %}">Закрыть</a>
+    {% else %}
+        <span class="ui green label">Завершено</span>
+        <a class="ui blue button" href="{% url 'update' task_id=task.id %}">Открыть</a>
+    {% endif %}
+        <a class="ui negative basic button" href="{% url 'delete' task.id %}">Удалить</a>
+        <a class="ui negative basic button" href="{% url 'add_to_user' task.id %}">Присоединиться</a>
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endblock %}
